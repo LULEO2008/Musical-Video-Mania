@@ -354,7 +354,6 @@ function buildDeck() {
     createCoverSlide(),
     createOverviewSlide(),
     ...mvItems.map(createDetailSlide),
-    createMomentsSlide(),
     createEndingSlide()
   ].join("");
 
