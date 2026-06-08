@@ -620,6 +620,26 @@ p {
   border-radius: 0;
 }
 
+.video-frame {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--line);
+}
+
+.video-frame::before,
+.video-frame::after {
+  content: none;
+}
+
+.mv-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #000;
+}
+
 .active .poster-frame {
   animation: posterIn 760ms var(--ease-film) 90ms both;
 }
