@@ -9,7 +9,7 @@ const mvItems = [
     summary: "A dark, high-energy MV built around suspense, movement, and a cinematic campus atmosphere.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/thriller.mp4"
   },
   {
     title: "Lemon Tree",
@@ -21,7 +21,7 @@ const mvItems = [
     summary: "A fresh and colorful MV that turns everyday student life into a light, playful story.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/lemon-tree.mp4"
   },
   {
     title: "Call You Tonight",
@@ -33,7 +33,7 @@ const mvItems = [
     summary: "A late-night message becomes the emotional thread connecting friends across different places.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/call-you-tonight.mp4"
   },
   {
     title: "7 Years",
@@ -45,7 +45,7 @@ const mvItems = [
     summary: "A reflective MV follows time, growth, and the memories that shape a student journey.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/7-years.mp4"
   },
   {
     title: "Gone",
@@ -57,7 +57,7 @@ const mvItems = [
     summary: "A quiet story of absence and memory unfolds through small details and empty spaces.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/gone.mp4"
   },
   {
     title: "Wake",
@@ -69,7 +69,7 @@ const mvItems = [
     summary: "An early morning rhythm pushes the characters from dreamlike stillness into action.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/wake.mp4"
   },
   {
     title: "From the Start",
@@ -81,7 +81,7 @@ const mvItems = [
     summary: "A gentle story looks back at a friendship that felt meaningful from the first moment.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/from-the-start.mp4"
   },
   {
     title: "Never Gonna Give You Up",
@@ -93,7 +93,7 @@ const mvItems = [
     summary: "A bright retro-inspired MV celebrates loyalty, humor, and classic performance energy.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/never-gonna-give-you-up.mp4"
   },
   {
     title: "等你下课 (Waiting for You to End Class)",
@@ -105,7 +105,7 @@ const mvItems = [
     summary: "A campus romance waits in hallways, classrooms, and the small pauses after class.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/waiting-for-you-to-end-class.mp4"
   },
   {
     title: "The Other Side of Paradise",
@@ -117,7 +117,7 @@ const mvItems = [
     summary: "A stylish MV contrasts dreamlike escape with the reality waiting on the other side.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/the-other-side-of-paradise.mp4"
   },
   {
     title: "Try",
@@ -129,7 +129,7 @@ const mvItems = [
     summary: "A simple but emotional MV follows the courage to keep trying after a difficult moment.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/try.mp4"
   },
   {
     title: "We Don't Talk Anymore",
@@ -141,7 +141,7 @@ const mvItems = [
     summary: "Two people move through the same memories while realizing how much has been left unsaid.",
     thumbnail: "",
     poster: "",
-    videoUrl: ""
+    videoUrl: "assets/videos/we-dont-talk-anymore.mp4"
   }
 ];
 
@@ -195,6 +195,18 @@ function qrBlock(item) {
     return `<img class="qr-image" src="${qrImage}" alt="Video QR code">`;
   }
   return `<div class="qr-placeholder" aria-label="QR code placeholder"></div>`;
+}
+
+function videoFrame(item) {
+  if (!item.videoUrl) {
+    return mediaFrame(`${item.title} poster / thumbnail`, item.poster || item.thumbnail, "poster-frame");
+  }
+  const posterAttr = item.poster || item.thumbnail ? ` poster="${item.poster || item.thumbnail}"` : "";
+  return `
+    <div class="video-frame poster-frame">
+      <video class="mv-video" controls preload="metadata" playsinline src="${item.videoUrl}"${posterAttr}></video>
+    </div>
+  `;
 }
 
 function createCoverSlide() {
@@ -265,7 +277,7 @@ function createDetailSlide(item, index) {
     <section class="slide mv-detail" data-slide-title="${item.title}">
       <div class="slide-inner">
         <div class="poster-area">
-          ${mediaFrame(`${item.title} poster / thumbnail`, item.poster || item.thumbnail, "poster-frame")}
+          ${videoFrame(item)}
           <div class="poster-footer">
             <span>Musical Video Mania</span>
             <span>${padNumber(index + 1)} / ${mvItems.length}</span>
