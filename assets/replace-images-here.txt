@@ -1,0 +1,11 @@
+Place replacement media in this folder.
+
+Recommended names:
+- cover.jpg
+- mv-01-thumbnail.jpg
+- mv-01-poster.jpg
+- mv-01-screenshot.jpg
+- mv-02-thumbnail.jpg
+- mv-02-poster.jpg
+
+After adding files, update the matching paths in ../script.js.
