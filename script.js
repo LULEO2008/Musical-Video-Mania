@@ -348,12 +348,35 @@ function createEndingSlide() {
   `;
 }
 
+function createVotingSlide() {
+  const qrImage = deckConfig.qrImage;
+  return `
+    <section class="slide voting-slide" data-slide-title="Audience Vote">
+      <div class="slide-inner voting-inner">
+        <div class="voting-copy">
+          <p class="kicker">Audience Choice</p>
+          <h2 class="section-title">Vote for Best MV</h2>
+          <p class="section-subtitle">Scan the QR code and choose the music video you think deserves the spotlight.</p>
+        </div>
+        <div class="vote-card" aria-label="Audience voting QR code">
+          ${qrImage ? `<img class="vote-qr" src="${qrImage}" alt="Audience voting QR code">` : `<div class="qr-placeholder vote-qr-placeholder" aria-label="Voting QR code placeholder"></div>`}
+          <div class="vote-label">
+            <span>Scan to Vote</span>
+            <strong>Best MV</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
 function buildDeck() {
   const stage = document.getElementById("slide-stage");
   stage.innerHTML = [
     createCoverSlide(),
     createOverviewSlide(),
     ...mvItems.map(createDetailSlide),
+    createVotingSlide(),
     createEndingSlide()
   ].join("");
 
