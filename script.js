@@ -152,7 +152,7 @@ const deckConfig = {
   festivalSubtitle: "Student MV Showcase",
   coverDate: "June 11",
   coverTime: "2:30 PM",
-  coverVenue: "West Lecture Hall",
+  coverVenue: "West Auditorium",
   overviewSubtitle: "Twelve student-made music videos presented as a cinematic showcase.",
   momentsSubtitle: "A collage wall for replacing with screenshots, stills, or behind-the-scenes frames."
 };
@@ -227,7 +227,7 @@ function createCoverSlide() {
           <span>${deckConfig.coverTime}</span>
           <span>${deckConfig.coverVenue}</span>
         </div>
-        <div class="cover-lineup">12 student-made music videos / live showcase deck</div>
+        <div class="cover-lineup">CTPS12- Musical Video Project</div>
       </div>
       <div class="cover-poster-wrap" aria-label="Musical Video Mania poster">
         <div class="cover-poster"${imageStyle(deckConfig.coverImage)}></div>
